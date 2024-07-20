@@ -65,7 +65,7 @@ fun SharedTransitionScope.UserListScreen(
                         UserCard(
                             user = user,
                             onClick = {
-                                //  onUserClick(user.attributes.posterImage.original, user.id)
+                                  onUserClick(user.image, user.id)
                             },
                             animatedVisibilityScope = animatedVisibilityScope
                         )

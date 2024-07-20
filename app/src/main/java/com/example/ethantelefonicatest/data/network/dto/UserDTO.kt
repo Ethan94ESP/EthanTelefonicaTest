@@ -13,7 +13,7 @@ data class UserDTO(
     val avatar: String
 ) {
     fun toModel() = UserBO(
-        id = id,
+        id = id.toString(),
         email = email,
         name = "$firstName $lastName",
         image = avatar
@@ -25,7 +25,7 @@ data class SupportDTO(
     val text: String
 )
 
-data class UserResponseDTO(
+data class UserListResponseDTO(
     val page: Int,
     @Json(name="per_page")
     val perPage: Int,
@@ -37,4 +37,12 @@ data class UserResponseDTO(
 ) {
     fun toModel(): List<UserBO> =
         data.map { it.toModel() }
+}
+
+data class UserDetailResponseDTO(
+    val data: UserDTO,
+    val support: SupportDTO
+) {
+    fun toModel(): UserBO =
+        data.toModel()
 }

@@ -28,4 +28,22 @@ class UserRepositoryImpl @Inject constructor(private val api: ReqresApi): UserRe
 
         return userData
     }
+
+    override suspend fun getUserDetail(id: Int): UserBO? {
+        var userDetail: UserBO? = null
+
+        api.getUserDetail(id)
+            .onSuccess {
+                Log.d("getUserList", "success")
+                userDetail = data.toModel()
+            }
+            .onError {
+                Log.d("getUserList", "error - ${this.message()}")
+            }
+            .onException {
+                Log.d("getUserList", "exception - ${this.message}")
+            }
+
+        return userDetail
+    }
 }
