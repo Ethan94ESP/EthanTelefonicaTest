@@ -1,10 +1,10 @@
-package com.example.ethantelefonicatest.domain.viewmodel
+package com.example.ethantelefonicatest.ui.screen.userlist
 
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ethantelefonicatest.domain.model.UserBO
-import com.example.ethantelefonicatest.domain.repository.UserRepository
+import com.example.ethantelefonicatest.domain.usecase.GetUserListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserListViewModel @Inject constructor(
-    private val repository: UserRepository
+    private val useCase: GetUserListUseCase
 ) : ViewModel() {
 
     private var _userData = MutableStateFlow<List<UserBO>>(emptyList())
@@ -22,7 +22,7 @@ class UserListViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _userData.update { repository.getUserList() }
+            _userData.update { useCase.execute(Unit) }
         }
     }
 }
