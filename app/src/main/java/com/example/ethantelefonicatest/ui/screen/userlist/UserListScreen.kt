@@ -24,7 +24,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.ethantelefonicatest.domain.viewmodel.UserListViewModel
 import com.example.ethantelefonicatest.ui.screen.userlist.composable.UserCard
 
 @Composable
